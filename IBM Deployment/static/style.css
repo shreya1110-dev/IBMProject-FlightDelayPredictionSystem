@@ -1,0 +1,109 @@
+body {
+    font-weight: 300;
+    background-color: lightblue;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+li {
+    list-style-type: none;
+}
+
+.navbar-nav .navbar-collapse{
+    text-align: center;
+    height: 10%;
+}
+
+.nav-item, .nav-item-active{
+    margin-right: 50px;
+    font-size: large;
+    width: 20%;
+}
+
+.nav-right-seperator {
+    margin-right: 30%;
+}
+
+.nav-left-seperator {
+    margin-left: 30%;
+}
+
+.nav-item-active {
+    background-color:grey;
+}
+
+.nav-item-active > a {
+    color: black;
+}
+
+.nav-item:hover {
+    background-color:grey;
+}
+
+.nav-item:hover > a {
+    color: black;
+}
+
+.navbar-nav.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translatex(-50%);
+}
+
+.alert-info {
+    width: 40%;
+}
+
+.alert-success {
+    width: 40%;
+}
+
+.alert-danger {
+    width: 40%;
+}
+
+.alert-msg {
+    font-size: medium;
+}
+
+.header {
+    height: 20%;
+}
+
+.home-content {
+    width: 100%;
+}
+
+.intro-content {
+    margin-top: 2%;
+}
+
+.details {
+    margin: 0 auto; 
+    width: 80%;
+    margin-left: 36%;
+}
+
+.signup-msg {
+    font-size: small;
+}
+
+.jumbotron {
+    position: relative;
+    background-size: cover;
+}
+
+.jumbotron > .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 132, 230, 0.85);
+    z-index: 1;
+}
+
+.jumbotron > .inner {
+    position: relative;
+    z-index: 2;
+}

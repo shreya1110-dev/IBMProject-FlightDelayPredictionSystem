@@ -1,0 +1,84 @@
+{% extends "base.html" %} 
+{% block content %}
+<div align="center">
+    <div align="center" class="border">
+      <div class="header"></div>
+      {% if msg %}
+      <div class="alert alert-info alert-dismissible fade show" role="alert">
+         <h1 class="alert-msg">{{ msg }}</h1>
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+     {% endif %}
+         <div class="home-content">
+            <h1><strong>Flight details</strong></h1><br><br>
+            <div class="details">
+            <form method="POST" action="/predict">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label-lg">Departure Date</label>
+              <div class="col-sm-3">
+                <input name="dep_date" type="date" placeholder="Enter Departure Date" class="form-control form-control-lg" required/>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label-lg">Flight Number</label>
+              <div class="col-sm-3">
+                <input name="fl_num" type="number" class="form-control form-control-lg" placeholder="Enter Flight Number" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label-lg">Tail Number</label>
+              <div class="col-sm-3">
+                <input name="tail_num" type="text" class="form-control form-control-lg" placeholder="Enter Tail Number" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label-lg">Departure Airport</label>
+              <div class="col-sm-3">
+                <select name="orig-airp" class="form-control form-control-lg">
+                  {% for airp in origin_airports %}
+                    <option value="{{ airp }}">{{ airp }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label-lg">Arrival Airport</label>
+              <div class="col-sm-3">
+                <select name="dest-airp" class="form-control form-control-lg">
+                  {% for airp in dest_airports %}
+                    <option value="{{ airp }}">{{ airp }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label-lg">Departure Time</label>
+              <div class="col-sm-3">
+                <input name="dep_time" type="time" placeholder="Enter Departure time" class="form-control form-control-lg" required/><br><br>
+                <input name="submit" type="submit" value="Submit" class="form-control-lg col-sm-3">
+              </div>
+            </div>
+            </form>
+          </div>
+
+        {% if predict == 0 %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h1 class="alert-msg">Arrival is <strong>NOT DELAYED</strong> by more than 15 minutes!</h1>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+        {% if predict == 1 %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <h1 class="alert-msg">Arrival is <strong>DELAYED</strong> by more than 15 minutes!</h1>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endif %}
+
+
+{% endblock %}
